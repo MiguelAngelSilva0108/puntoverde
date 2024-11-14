@@ -1,32 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Contenedor principal */
 .customRectangle {
-    width: 100vw; /* El rectángulo cubre todo el ancho del viewport */
-    height: 25%; /* La altura del rectángulo es un porcentaje del alto del viewport */
-    background-color: #41B59A; /* Color de fondo */
-    border-radius: 0 0 30% 0; /* Borde inferior redondeado */
-    margin-top: 0px; /* Deja suficiente espacio para el navbar */
-    margin-bottom: 25%; /* Agrega un margen inferior para separar el rectángulo del footer */
-    position: relative; /* Se coloca sin solaparse con otros elementos */
-    transition: height 0.3s ease; /* Transición suave en la altura */
+    width: 100vw;
+    height: 100%;
+    background-color: #41B59A;
+    border-radius: 0 0 60% 0;
+    margin-top: 75px;
+    margin-bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: height 0.3s ease;
+    padding: 20px;
+    text-align: center; /* Centra el contenido */
 }
 
+/* Imagen responsiva */
+.responsiveImage {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-left: 10%; /* Alinea la imagen a la izquierda */
+    margin-right: auto; /* Elimina el margen derecho */
+}
 
-/* Ajuste para pantallas más pequeñas */
+/* Texto debajo de la imagen */
+.textContent {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #fff;
+    margin-top: 15px;
+    text-align: center; /* Asegura que el texto esté centrado debajo de la imagen */
+    width: 25%; /* El ancho del texto igual al de la imagen */
+    margin-left: 10%; /* Centra el texto según la imagen */
+}
+
+/* Responsivo */
 @media (max-width: 1020px) {
     .customRectangle {
-        height: 150vh; /* Aumenta la altura del rectángulo en pantallas medianas */
+        height: 125%;
+        border-radius: 0 0 40% 0;
+    }
+
+    .responsiveImage {
+        width: 80%;
+        margin-top: 5%;
+        margin-left: 10%; /* Ajusta para centrar en pantallas medianas */
+    }
+
+    .textContent {
+        font-size: 1rem; /* Tamaño de texto más pequeño en pantallas medianas */
+        width: 80%; /* Hace que el texto ocupe el mismo ancho que la imagen */
+        margin-left: 10%; /* Centra el texto */
     }
 }
 
-/* Ajuste para pantallas grandes para evitar espacios vacíos */
+/* Pantallas más grandes */
 @media (min-width: 1021px) {
     .customRectangle {
-        height: 75%; /* Asegura que el rectángulo no quede vacío en pantallas grandes */
+        height: 80%;
+        border-radius: 0 0 50% 0;
+    }
+
+    .responsiveImage {
+        width: 50%; /* Ajusta el tamaño de la imagen */
+        height: auto;
+        object-fit: contain;
+        margin-top: 4%; /* Ajuste de margen superior */
+        margin-left: 10%; /* Alinea la imagen a la izquierda */
+        margin-right: auto; /* Elimina el margen derecho */
+        display: block; /* Asegura que la imagen se muestre como bloque */
+    }
+    
+    .textContent {
+        font-size: 1rem; /* Tamaño de texto moderado en pantallas grandes */
+        width: 50%; /* Limita el ancho del texto igual al de la imagen */
+        margin-top: 10px; /* Ajuste de margen superior para separar el texto de la imagen */
+        margin-left: 10%; /* Alinea el texto con la imagen */
+        margin-right: auto; /* Elimina el margen derecho */
+        text-align: justify;
     }
 }
-
-.responsiveImage {
-    max-width: 100%; /* La imagen se ajusta al ancho del contenedor */
-    max-height: 100%; /* La imagen se ajusta a la altura del contenedor */
-    object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
-}
-
