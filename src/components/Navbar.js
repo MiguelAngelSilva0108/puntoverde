@@ -1,3 +1,4 @@
+// src/components/Navbar.js
 import React, { useState } from 'react'; 
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
@@ -20,7 +21,6 @@ function Navbar() {
                 </h2>
             </div>
 
-            {/* Muestra el botón de hamburguesa solo cuando el menú está cerrado */}
             {!menuOpen && (
                 <div className="hamburger" onClick={toggleMenu}>
                     <div className="bar"></div>
@@ -29,14 +29,13 @@ function Navbar() {
                 </div>
             )}
 
-            {/* Muestra el botón de cerrar solo cuando el menú está abierto */}
             {menuOpen && (
                 <button className="close-btn" onClick={toggleMenu}>X</button>
             )}
 
             <ul className={menuOpen ? 'active' : ''}>
-                <li><Link to="#home" onClick={toggleMenu} className="menu-item">Inicio</Link></li>
-                <li><Link to="#about" onClick={toggleMenu} className="menu-item">Mapa</Link></li>
+                <li><Link to="/" onClick={toggleMenu} className="menu-item">Inicio</Link></li>
+                <li><Link to="/mapa" onClick={toggleMenu} className="menu-item">Mapa</Link></li> {/* Actualiza el enlace */}
                 <li><Link to="#contact" onClick={toggleMenu} className="menu-item">SEDEMA</Link></li>
             </ul>
         </nav>

@@ -1,24 +1,26 @@
+// src/App.js
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-//import Footer from './components/Footer';
 import Home from './pages/Home';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Importamos Router, Routes y Route
+import Mapa from './pages/Mapa'; // Importa Mapa.js desde pages
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
-  return (
-    <Router> {/* Envolvemos todo con Router */}
-      <div className="App">
-        <Navbar />
-        <header className="App-header">
-          <Routes> {/* Usamos Routes para definir nuestras rutas */}
-            <Route path="/" element={<Home />} /> {/* Ruta para Home */}
-          </Routes>
-        </header>
-        {/*<Footer >*/}
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Navbar />
+                <header className="App-header">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/mapa" element={<Mapa />} /> {/* Ruta para Mapa */}
+                    </Routes>
+                </header>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
+
