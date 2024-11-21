@@ -2,6 +2,10 @@
 
 /* Contenedor principal */
 .customRectangle {
+    display: flex;
+    flex-direction: row; /* Alineación horizontal por defecto */
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100%;
     background-color: #41B59A;
@@ -13,73 +17,95 @@
     left: 0;
     transition: height 0.3s ease;
     padding: 20px;
-    text-align: center; /* Centra el contenido */
 }
 
 /* Imagen responsiva */
 .responsiveImage {
-    max-width: 100%;
+    flex-basis: 200px; /* Establece un tamaño inicial para la imagen */
     height: auto;
     object-fit: contain;
-    display: block;
-    margin-left: 10%; /* Alinea la imagen a la izquierda */
-    margin-right: auto; /* Elimina el margen derecho */
+    margin-right: 20px;
 }
 
-/* Texto debajo de la imagen */
+/* Contenedor de texto y logo */
 .textContent {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
     color: #fff;
-    margin-top: 15px;
-    text-align: center; /* Asegura que el texto esté centrado debajo de la imagen */
-    width: 25%; /* El ancho del texto igual al de la imagen */
-    margin-left: 10%; /* Centra el texto según la imagen */
+    margin-top: 0px;
+    text-align: left;
+    flex-basis: 250px; /* Establece un tamaño inicial para el texto */
+    margin-right: 20px;
+}
+
+/* Logo de UPIICSA */
+.logoupiicsa {
+    flex-basis: 25%; /* Establece un tamaño inicial para el logo */
+    max-width: 25%;
+    height: auto;
+    margin-right: 16%;
+    margin-top: -10%;
 }
 
 /* Responsivo */
 @media (max-width: 1020px) {
     .customRectangle {
-        height: 125%;
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        height: auto; /* Ajusta la altura automáticamente */
         border-radius: 0 0 40% 0;
     }
 
     .responsiveImage {
-        width: 80%;
+        width: 80%; /* Ajusta el tamaño de la imagen */
         margin-top: 5%;
-        margin-left: 10%; /* Ajusta para centrar en pantallas medianas */
+        margin-left: 10%; /* Centra la imagen */
     }
 
     .textContent {
         font-size: 1rem; /* Tamaño de texto más pequeño en pantallas medianas */
         width: 80%; /* Hace que el texto ocupe el mismo ancho que la imagen */
         margin-left: 10%; /* Centra el texto */
+        margin-bottom: 10px; /* Agrega separación debajo del texto */
+    }
+
+    .logoupiicsa {
+        width: 80%; /* El logo se adapta al ancho disponible */
+        max-width: 80%;
+        margin-left: 10%; /* Centra el logo */
+        margin-top: 10px; /* Espacio entre el logo y el texto */
     }
 }
 
 /* Pantallas más grandes */
 @media (min-width: 1021px) {
     .customRectangle {
+        flex-direction: row; /* Mantiene alineación horizontal */
         height: 80%;
         border-radius: 0 0 50% 0;
     }
 
     .responsiveImage {
-        width: 50%; /* Ajusta el tamaño de la imagen */
+        width: 80%;
         height: auto;
         object-fit: contain;
-        margin-top: 4%; /* Ajuste de margen superior */
-        margin-left: 10%; /* Alinea la imagen a la izquierda */
-        margin-right: auto; /* Elimina el margen derecho */
-        display: block; /* Asegura que la imagen se muestre como bloque */
+        margin-top: -10%;
+        margin-left: 10%;
+        margin-right: auto;
+        display: block;
     }
-    
+
     .textContent {
-        font-size: 1rem; /* Tamaño de texto moderado en pantallas grandes */
-        width: 50%; /* Limita el ancho del texto igual al de la imagen */
-        margin-top: 10px; /* Ajuste de margen superior para separar el texto de la imagen */
-        margin-left: 10%; /* Alinea el texto con la imagen */
-        margin-right: auto; /* Elimina el margen derecho */
+        font-size: 1rem;
+        width: 80%;
+        margin-top: 10px;
+        margin-left: 10%;
+        margin-right: auto;
         text-align: justify;
+    }
+
+    .logoupiicsa {
+        max-width: 25%;
+        margin-right: 16%;
+        margin-top: -10%;
     }
 }

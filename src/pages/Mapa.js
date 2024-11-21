@@ -1,24 +1,48 @@
-// src/pages/Mapa.js
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import React, { useEffect, useState } from "react";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import '../styles/Mapa.css';
 
-const center = [23.634501, -102.552784]; // Centro de México
+const center = { lat: 23.634501, lng: -102.552784 };
 
 function Mapa() {
+    const [lugares, setLugares] = useState([]);
+
+    useEffect(() => {
+        const buscarCentros = async () => {
+            try {
+                const response = await fetch(
+                    `http://localhost:3001/api/nearbysearch?location=${center.lat},${center.lng}&radius=50000&type=recycling&key=TU_API_KEY`
+                );
+                const data = await response.json();
+                setLugares(data.results);
+            } catch (error) {
+                console.error("Error al buscar centros de reciclaje:", error);
+            }
+        };
+
+        buscarCentros();
+    }, []);
+
     return (
-        <div>
-            <h1>Mapa con Centros de Reciclaje</h1>
-            <MapContainer center={center} zoom={5} style={{ width: '100%', height: '400px' }}>
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                <Marker position={center}>
-                </Marker>
-            </MapContainer>
-        </div>
+        <LoadScript googleMapsApiKey="AIzaSyC_kWJGoGCdgwzLygI3REUY0uTJQXoZk9g">
+            <GoogleMap
+                mapContainerStyle={{ width: "100%", height: "400px" }}
+                center={center}
+                zoom={5}
+            >
+                {lugares.map((lugar, index) => (
+                    <Marker
+                        key={index}
+                        position={{
+                            lat: lugar.geometry.location.lat,
+                            lng: lugar.geometry.location.lng,
+                        }}
+                    />
+                ))}
+            </GoogleMap>
+        </LoadScript>
     );
 }
 
 export default Mapa;
+
