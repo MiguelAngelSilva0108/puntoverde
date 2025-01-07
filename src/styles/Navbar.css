@@ -10,6 +10,15 @@ nav {
     z-index: 1000;
 }
 
+.navbar-mapa {
+    border-radius: 0 0 35px 35px;
+    overflow: hidden;
+    z-index: 10; /* Mantén el Navbar por encima del mapa */
+    position: relative; /* Asegura que el z-index funcione */
+}
+
+
+
 nav h2 {
     font-family: 'Edu AU VIC WA NT Pre', sans-serif;
     font-size: 2em;
@@ -95,6 +104,12 @@ ul.active {
         align-items: center;
     }
 
+    .navbar-mapa {
+        border-radius: 0 0 35px 35px; /* Aplica el border-radius solo en la página de Mapa */
+        overflow: hidden; /* Evita que el contenido se desborde */
+    }
+    
+
     ul {
         display: flex;
         width: 100%;
@@ -168,5 +183,10 @@ ul.active {
 @media (max-width: 600px) {
     ul li a {
         font-size: 2em; /* Texto ligeramente más pequeño para pantallas muy pequeñas */
+        .navbar-mapa {
+            border-radius: 0 0 15px 15px; /* Aplica el border-radius solo en la página de Mapa */
+            overflow: hidden; /* Evita que el contenido se desborde */
+        }
+        
     }
 }

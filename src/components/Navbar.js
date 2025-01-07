@@ -1,17 +1,19 @@
-// src/components/Navbar.js
 import React, { useState } from 'react'; 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'; // Importa useLocation
 import '../styles/Navbar.css';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const location = useLocation(); // Obtiene la ubicación actual
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
 
+    const isMapaPage = location.pathname === "/mapa"; // Verifica si estás en la página de Mapa
+
     return (
-        <nav>
+        <nav className={isMapaPage ? 'navbar-mapa' : ''}> {/* Clase condicional */}
             <div className="logo-container">
                 <h2>
                     <Link to="/" style={{ textDecoration: 'none' }}>
@@ -35,7 +37,7 @@ function Navbar() {
 
             <ul className={menuOpen ? 'active' : ''}>
                 <li><Link to="/" onClick={toggleMenu} className="menu-item">Inicio</Link></li>
-                <li><Link to="/mapa" onClick={toggleMenu} className="menu-item">Mapa</Link></li> {/* Actualiza el enlace */}
+                <li><Link to="/mapa" onClick={toggleMenu} className="menu-item">Mapa</Link></li>
                 <li><Link to="#contact" onClick={toggleMenu} className="menu-item">SEDEMA</Link></li>
             </ul>
         </nav>
